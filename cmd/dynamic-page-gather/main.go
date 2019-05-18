@@ -16,7 +16,7 @@ var (
 	targetUrl    = flag.String("target-url", "", "")
 	keepOpenTtl  = flag.Uint64("keep-open", 60, "How many time keep page open (in seconds)")
 	gatherPeriod = flag.Uint("gather-period", 1000, "Dumping result period (in milliseconds)")
-	outputFile   = flag.String("output", "", "")
+	outputFile   = flag.String("output-file", "", "")
 )
 
 const pageReadyTimeout = 2500
@@ -30,8 +30,6 @@ func main() {
 	defer cancel()
 
 	var deadLine time.Time
-	//deadLine := time.Now().Add(time.Duration(*keepOpenTtl) * time.Second)
-	//deadLine = deadLine.Add(time.Millisecond * time.Duration(pageReadyTimeout))
 
 	sleepDur := time.Duration(*gatherPeriod) * time.Millisecond
 
